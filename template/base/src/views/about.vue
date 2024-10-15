@@ -1,6 +1,4 @@
-<script setup>
-import { reactive, ref } from 'vue'
-</script>
+<script setup> </script>
 
 <template>
   <div>test text</div>
