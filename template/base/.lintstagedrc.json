@@ -1,0 +1,13 @@
+{
+  "*.{js,jsx,ts,tsx,cjs,json}": [
+    "eslint --fix"
+  ],
+  "*.vue": [
+    "eslint --fix"
+  ],
+  "package.json": [],
+  "*.{less,scss,html}": [
+    "eslint --fix"
+  ],
+  "*.{md}": []
+}
