@@ -83,7 +83,7 @@ async function init() {
     process.exit(1)
   }
 
-  const { projectName, shouldOverwrite, cssEngine, ui } = answer
+  const { shouldOverwrite, cssEngine, ui } = answer
   // 添加loading
   const spinner = ora({
     text: yellow('初始化项目中...'),
@@ -94,9 +94,9 @@ async function init() {
   console.log()
 
   // 如果目录存在，清空文件夹
-  let dest = path.join(process.cwd(), projectName)
-  if (fs.existsSync(path.join(process.cwd(), projectName)) || shouldOverwrite) {
-    fs.rmSync(path.join(process.cwd(), projectName), { recursive: true })
+  let dest = path.join(process.cwd(), targetDir)
+  if (fs.existsSync(dest) || shouldOverwrite) {
+    fs.rmSync(dest, { recursive: true })
   }
   // 如果不存在，创建文件夹
   else {
@@ -122,7 +122,7 @@ async function init() {
 
   // 修改package.json初始化项目名称
   const packageJson = JSON.parse(fs.readFileSync(path.join(dest, 'package.json')).toString())
-  packageJson.name = projectName
+  packageJson.name = targetDir
   fs.writeFileSync(path.join(dest, 'package.json'), JSON.stringify(packageJson, null, 2))
 
   spinner.text = `${green('初始化项目成功')}\n\n🍍 ${dest} `
@@ -131,7 +131,7 @@ async function init() {
   let packageManager = detectPackageManager()
   console.log(``)
   console.log(blueBright('📖 可执行以下命令'))
-  console.log(bold(green(`cd ${projectName}`)))
+  console.log(bold(green(`cd ${targetDir}`)))
   console.log(bold(green(`${packageManager} install`)))
   console.log(bold(green(`${packageManager == 'npm' ? 'npm run dev' : `${packageManager} dev`}`)))
   console.log(``)
