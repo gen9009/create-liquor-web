@@ -31,12 +31,6 @@ function renderTemplate(src, dest) {
     return
   }
 
-  // 特殊文件名处理（_开头的文件）
-  // if (filename.startsWith('_')) {
-  //   dest = path.resolve(path.dirname(dest), filename.replace(/^_/, '.'))
-  // }
-
-  // 3、复制文件
   fs.copyFileSync(src, dest)
 }
 
