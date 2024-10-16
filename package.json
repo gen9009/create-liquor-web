@@ -16,7 +16,9 @@
     "create-liquor-web",
     "vue3"
   ],
-  "main": "index.js",
+  "bin": {
+    "create-liquor-web": "outfile.cjs"
+  },
   "files": [
     "outfile.cjs",
     "template"
@@ -31,8 +33,10 @@
     "@antfu/eslint-config": "^3.7.3",
     "@types/node": "^22.7.5",
     "@types/prompts": "^2.4.9",
+    "boxen": "^8.0.1",
     "esbuild": "^0.24.0",
     "eslint": "^9.12.0",
+    "ora": "^8.1.0",
     "picocolors": "^1.1.0",
     "prompts": "^2.4.2",
     "typescript": "^5.6.3"

@@ -2,14 +2,7 @@ import process from 'node:process' // Node.js v18+ 提供
 import { parseArgs } from 'node:util'
 
 // 定义选项
-const options = {
-  'with-tests': { type: 'boolean' }, // 定义 boolean 类型参数
-  'tests': { type: 'boolean' },
-  'vue-router': { type: 'boolean' },
-  'router': { type: 'boolean' },
-  'vue-devtools': { type: 'boolean' },
-  'devtools': { type: 'boolean' },
-}
+const options: { [key: string]: Record<'type', 'string' | 'boolean'> } = {}
 
 // 从命令行读取参数
 const args = process.argv.slice(2)
