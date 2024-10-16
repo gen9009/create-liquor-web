@@ -30,7 +30,7 @@ async function init() {
       {
         type: 'select',
         name: 'cssEngine',
-        message: '🍓 请选择你希望集成的css预设?',
+        message: '🥥 请选择你希望集成的css预设?',
         choices: [
           { title: 'unocss', value: 'unocss' },
           { title: 'tailwind', value: 'tailwind' },
@@ -39,10 +39,10 @@ async function init() {
       {
         type: 'select',
         name: 'ui',
-        message: '🍓 请选择你希望集成的ui组件库?',
+        message: '🍐 请选择你希望集成的ui组件库?',
         choices: [
           { title: 'ElementPlus', value: 'elementplus' },
-          { title: 'Acro', value: 'acro' },
+          { title: 'Arco', value: 'arco' },
           { title: 'Vuetifyjs', value: 'vuetifyjs' },
         ]
       }
@@ -52,7 +52,7 @@ async function init() {
 
   try {
     console.log()
-    console.log(blue(bold(`创建你的 vue3+vite+ts+ui 模版👇${yellow('便于书写demo')}`)))
+    console.log(blue(bold(`创建你的 vue3+vite+ts+ui 模版👇${yellow('便于编码demo')}`)))
     console.log()
 
     const answer = await askNext()
@@ -78,16 +78,22 @@ async function init() {
 
     // 创建模版
     render('base')
-
     // 集成css预设
     render(`css-engine/${cssEngine}`)
     // 集成ui组件配置
     render(`comp/${ui}`)
     // 集成入口配置
     let entry = [cssEngine, ui].join('-')
+    console.log('🚀::::::🐶💩', ui)
     render(`entry/${entry}`)
     // 集成vite配置
     render(`vite-plugin/${cssEngine}`)
+
+    // 修改package.json初始化项目名称
+    const packageJson = JSON.parse(fs.readFileSync(path.join(dest, 'package.json')).toString())
+    packageJson.name = projectName
+    fs.writeFileSync(path.join(dest, 'package.json'), JSON.stringify(packageJson, null, 2))
+
 
 
 

@@ -1,5 +1,5 @@
 {
-  "devDependencies": {
+  "dependencies": {
     "vuetify": "^3.7.2"
   }
 }
