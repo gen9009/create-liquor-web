@@ -27,9 +27,7 @@ async function exce() {
     console.log(`版本更新: ${yellow(version)} -> ${yellowBright(newVersion)}`)
 
     // 提交到 Git，添加标签
-    await $`git add package.json`
-    await $`git commit -m "release: v${newVersion}"`
-    await $`git tag -a v${newVersion} -m "Release version ${newVersion}"`
+    // await $`git tag -a v${newVersion} -m "Release version ${newVersion}"`
     await $`git push --follow-tags`
 
     // 发布到 npm
