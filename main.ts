@@ -6,7 +6,7 @@ import parseArgs from 'utils/parseArgs'
 import renderTemplate from 'utils/renderTemplate'
 import { isExistsFile, isValidPackageName } from 'utils/validate'
 import { detectPackageManager } from 'utils/packageManager'
-import { blue, bold, yellow, green, red, blueBright } from 'picocolors'
+import { bold, yellow, green, red, blueBright } from 'picocolors'
 import boxen from 'boxen';
 import ora from 'ora'
 
@@ -39,7 +39,7 @@ async function init() {
           name: 'overwriteChecker',
           type: (prev, values) => {
             if (values.shouldOverwrite === false) {
-              throw new Error(red('✖') + ` 构建取消`)
+              throw new Error(red('𝙭') + ` 构建取消`)
             }
             return null
           }
