@@ -30,7 +30,13 @@ function renderTemplate(src, dest) {
     fs.writeFileSync(dest, `${JSON.stringify(pkg, null, 2)}\n`)
     return
   }
-
+  // 处理 .gitignore
+  if (filename === '.gitignore' && fs.existsSync(dest)) {
+    const existing = fs.readFileSync(dest, 'utf8')
+    const newGitignore = fs.readFileSync(src, 'utf8')
+    fs.writeFileSync(dest, `${existing}\n${newGitignore}`)
+    return
+  }
   fs.copyFileSync(src, dest)
 }
 
